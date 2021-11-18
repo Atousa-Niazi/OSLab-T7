@@ -1,12 +1,27 @@
 #Atousa Niazi Abkoh-98440127-python-Fraction-class-OSLAb-T7_2
 # n for numerator / d for denominator
+from math import gcd
+
+def decore():
+    print("\033[38;5;41m*****************")
 
 class fraction:
     def __init__(self, n=0,d=None):
         self.n = n
         self.d=d
+        self.reduceFraction()
     def show(self):
-        print(self.n,"/",self.d)
+        if self.n==self.d:
+            print("\033[38;5;211m",self.n)
+        elif self.n==0:
+            print('0')
+        else:
+            print("\033[38;5;211m",self.n,"/",self.d)
+        
+    def reduceFraction(self) :
+        c = gcd(self.n,self.d);
+        self.n = self.n // c;
+        self.d= self.d // c;
     def Sum(self,other):
         numerator=self.n*other.d+self.d*other.n
         denominator=self.d*other.d
@@ -29,37 +44,35 @@ class fraction:
         return result
 
     
-print('welcome !')
-print('we need 4 ints for two fractions.')
-print('please enter 4 num:')
+print('\033[38;5;225mwelcome !')
+print('\033[38;5;225mwe need 4 ints for two fractions.')
+print('\033[38;5;225mplease enter 4 num:')
 n1=int(input())
 d1=int(input())
 while d1==0:
-    print('wrong num, try again:')
+    print('\033[38;5;209wrong num, try again:')
     d1=int(input())
 n2=int(input())
 d2=int(input())
 while d2==0:
-    print('wrong num, try again:')
+    print('\033[38;5;209mwrong num, try again:')
     d2=int(input())
+
 f1=fraction(n1,d1)
-f1.show()
-
 f2=fraction(n2,d2)
-f2.show()
-
+decore()
 f3=f1.Sum(f2)
-print('Sum:')
+print('\033[38;5;111mSum:')
 f3.show()
-
+decore()
 f3=f1.Sub(f2)
-print('Sub:')
+print('\033[38;5;111mSub:')
 f3.show()
-
+decore()
 f3=f1.Mult(f2)
-print('Mult:')
+print('\033[38;5;111mMult:')
 f3.show()
-
+decore()
 f3=f1.Div(f2)
-print('Div:')
+print('\033[38;5;111mDiv:')
 f3.show()
